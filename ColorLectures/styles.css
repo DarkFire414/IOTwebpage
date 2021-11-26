@@ -1,0 +1,43 @@
+h1{
+    text-align: center;
+}
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #586a8c;
+    font-family: monospace;
+    text-align: center;
+}
+th {
+    background-color: #588c7e;
+    color: white;
+    height: 30px;
+    font-size: 20px;
+}
+tr{
+    font-size: 15px;
+}
+
+tr:nth-child(even) {background-color: #53ccc227}
+tr:hover {background-color: rgba(16, 206, 165, 0.486);}
+
+.Ref1{
+    text-align: right;
+}
+
+.Ref2{
+    text-align: right;
+}
+
+.Ref3{
+    text-align: right;
+}
+
+.Muestra{
+    text-align: right;
+}
+
