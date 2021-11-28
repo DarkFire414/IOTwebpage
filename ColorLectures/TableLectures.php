@@ -16,7 +16,8 @@
     }
     //echo "Connected successfully";
 
-    $sql = "SELECT `color_id`, `color_result`, `h_ref1`, `s_ref1`, `l_ref1`, `h_ref2`, `s_ref2`, `l_ref2`, `h_ref3`, `s_ref3`, `l_ref3`, `h_samp`, `s_samp`, `l_samp`, `color_diff`, `color_tol`, `color_date` FROM `data_colorimeter`" . $_SESSION["User"];
+    $sql = "SELECT `color_id`, `color_result`, `h_ref1`, `s_ref1`, `l_ref1`, `h_ref2`, `s_ref2`, `l_ref2`, `h_ref3`, `s_ref3`, `l_ref3`, `h_samp`, `s_samp`, `l_samp`, `color_diff`, `color_tol`, `color_date` FROM `data_colorimeter` WHERE `color_username` = '". $_SESSION["User"] . "'";
+    //echo $sql;
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0)
