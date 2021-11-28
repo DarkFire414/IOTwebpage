@@ -44,7 +44,7 @@
     //Select database
     $conn->select_db($database);
     //DarkSide	12345678
-    $sql = "SELECT `User` FROM `Users`  WHERE `User` = \"$user\"";
+    $sql = "SELECT `User` FROM `Users`  WHERE `User` = \"$user\" AND `Password` = \"$pass\"";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1){

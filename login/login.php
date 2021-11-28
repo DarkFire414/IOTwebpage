@@ -120,15 +120,16 @@
         </div> 
         
         <div class="main">
-            <?php
-                echo '<p style="text-align: center;">';
-                echo $_SESSION["status"];
-                echo '</p>';
-            ?>
-            
+
             <div class="form">
                 <form class="formContainer" action="loginControlAcces.php" method="get">
                     <h1>Soluciones IOT</h1>
+                    
+                    <?php
+                        echo '<p style="text-align: center;">';
+                        echo $_SESSION["status"];
+                        echo '</p>';
+                    ?>
                     
                     <label for="user">Usuario: </label><br><br>
                     <input type="text" id="user" name="user"><br><br>  
