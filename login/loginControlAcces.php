@@ -43,15 +43,15 @@
 
     //Select database
     $conn->select_db($database);
-    //DarkSide	12345678
-    $sql = "SELECT `User` FROM `Users`  WHERE `User` = \"$user\" AND `Password` = \"$pass\"";
+    
+    $sql = "SELECT `user_name` FROM `users`  WHERE `user_name` = \"$user\" AND `user_password` = \"$pass\"";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1){
         //Match credentials
         //echo "Access";
         $row = $result->fetch_assoc();
-        $_SESSION['User'] = $row['User'];
+        $_SESSION['User'] = $row['user_name'];
 
         $url.='/Practice/ColorSensorPage/ColorLectures/colorlectures.php';
         $_SESSION["status"] = "";
