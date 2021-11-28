@@ -29,7 +29,7 @@
     $servername = "sql102.epizy.com";
     $username = "epiz_30279333";
     $password = "0rbzdnc6";
-    $database = "epiz_30279333_testDataBaseUsers";
+    $database = "epiz_30279333_iotDB";
     
     // Create conection
     $conn = new mysqli($servername, $username, $password);
