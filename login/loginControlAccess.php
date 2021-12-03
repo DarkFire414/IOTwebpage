@@ -53,13 +53,13 @@
         $row = $result->fetch_assoc();
         $_SESSION['User'] = $row['user_name'];
 
-        $url.='/Practice/ColorSensorPage/ColorLectures/colorlectures.php';
+        $url.='/Practice/iotplatform/usermainpage/userview.php';
         $_SESSION["status"] = "";
     }
     else{
         //echo "User not found" . $result->num_rows;
         //echo "<br>" . $sql;
-        $url .= '/Practice/ColorSensorPage/login/login.php';
+        $url .= '/Practice/iotplatform/login/login.php';
         $_SESSION["status"] = "Usuario o contraseña incorrectos";
     }
 
