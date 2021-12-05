@@ -4,7 +4,7 @@
     $servername = "sql102.epizy.com";
     $username = "epiz_30279333";
     $password = "0rbzdnc6";
-    $database = "epiz_30279333_lecturas_color";
+    $database = "epiz_30279333_iotDB";
 
     // Create conection
     $conn = new mysqli($servername, $username, $password, $database);
@@ -16,7 +16,8 @@
     }
     //echo "Connected successfully";
 
-    $sql = "SELECT `id`, `Estado`, `H_Referencia1`, `S_Referencia1`, `L_Referencia1`, `H_Referencia2`, `S_Referencia2`, `L_Referencia2`, `H_Referencia3`, `S_Referencia3`, `L_Referencia3`, `H_Muestra`, `S_Muestra`, `L_Muestra`, `Diferencia`, `Tolerancia`, `Fecha` FROM informacion_lecturas" . $_SESSION["User"];
+    $sql = "SELECT `color_id`, `color_result`, `h_ref1`, `s_ref1`, `l_ref1`, `h_ref2`, `s_ref2`, `l_ref2`, `h_ref3`, `s_ref3`, `l_ref3`, `h_samp`, `s_samp`, `l_samp`, `color_diff`, `color_tol`, `color_date` FROM `data_colorimeter` WHERE `color_username` = '". $_SESSION["User"] . "'";
+    //echo $sql;
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0)
@@ -25,19 +26,19 @@
         //Output data of each row
         while($row = $result->fetch_assoc())
         {
-            $hex1 = convertHSL($row["H_Referencia1"], $row["S_Referencia1"], $row["L_Referencia1"]);
-            $hex2 = convertHSL($row["H_Referencia2"], $row["S_Referencia2"], $row["L_Referencia2"]);
-            $hex3 = convertHSL($row["H_Referencia3"], $row["S_Referencia3"], $row["L_Referencia3"]);
-            $hex4 = convertHSL($row["H_Muestra"], $row["S_Muestra"], $row["L_Muestra"]);
-            echo "<tr><td>" . $row["id"] . 
-                 "</td><td>" . $row["Estado"] . 
-                 "</td><td class = 'Ref1'>(" . $row["H_Referencia1"] . "," . $row["S_Referencia1"] . "," . $row["L_Referencia1"] . ')  <input type="color" id="colorInput1_' . $colorid . '" name="colorInput" value="' . $hex1 . '">' . 
-                 "</td><td class = 'Ref2'>(" . $row["H_Referencia2"] . "," . $row["S_Referencia2"] . "," . $row["L_Referencia2"] . ')  <input type="color" id="colorInput2_' . $colorid . '" name="colorInput" value="' . $hex2 . '">' .
-                 "</td><td class = 'Ref3'>(" . $row["H_Referencia3"] . "," . $row["S_Referencia3"] . "," . $row["L_Referencia3"] . ')  <input type="color" id="colorInput3_' . $colorid . '" name="colorInput" value="' . $hex3 . '">' .
-                 "</td><td class = 'Muestra'>(" . $row["H_Muestra"] . "," . $row["S_Muestra"] . "," . $row["L_Muestra"] . ')  <input type="color" id="colorInput4_' . $colorid . '" name="colorInput" value="' . $hex4 . '">' .
-                 "</td><td>" . $row["Diferencia"] .
-                 "</td><td>" . $row["Tolerancia"] .
-                 "</td><td>" . $row["Fecha"] .
+            $hex1 = convertHSL($row["h_ref1"], $row["s_ref1"], $row["l_ref1"]);
+            $hex2 = convertHSL($row["h_ref2"], $row["s_ref2"], $row["l_ref2"]);
+            $hex3 = convertHSL($row["h_ref3"], $row["s_ref3"], $row["l_ref3"]);
+            $hex4 = convertHSL($row["h_samp"], $row["s_samp"], $row["l_samp"]);
+            echo "<tr><td>" . $row["color_id"] . 
+                 "</td><td>" . $row["color_result"] . 
+                 "</td><td class = 'Ref1'>(" . $row["h_ref1"] . "," . $row["s_ref1"] . "," . $row["l_ref1"] . ')  <input type="color" id="colorInput1_' . $colorid . '" name="colorInput" value="' . $hex1 . '">' . 
+                 "</td><td class = 'Ref2'>(" . $row["h_ref2"] . "," . $row["s_ref2"] . "," . $row["l_ref2"] . ')  <input type="color" id="colorInput2_' . $colorid . '" name="colorInput" value="' . $hex2 . '">' .
+                 "</td><td class = 'Ref3'>(" . $row["h_ref3"] . "," . $row["s_ref3"] . "," . $row["l_ref3"] . ')  <input type="color" id="colorInput3_' . $colorid . '" name="colorInput" value="' . $hex3 . '">' .
+                 "</td><td class = 'Muestra'>(" . $row["h_samp"] . "," . $row["s_samp"] . "," . $row["l_samp"] . ')  <input type="color" id="colorInput4_' . $colorid . '" name="colorInput" value="' . $hex4 . '">' .
+                 "</td><td>" . $row["color_diff"] .
+                 "</td><td>" . $row["color_tol"] .
+                 "</td><td>" . $row["color_date"] .
                  "</td></tr>";
 
             echo '<script>

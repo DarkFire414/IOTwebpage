@@ -29,7 +29,7 @@
     $servername = "sql102.epizy.com";
     $username = "epiz_30279333";
     $password = "0rbzdnc6";
-    $database = "epiz_30279333_testDataBaseUsers";
+    $database = "epiz_30279333_iotDB";
     
     // Create conection
     $conn = new mysqli($servername, $username, $password);
@@ -43,23 +43,23 @@
 
     //Select database
     $conn->select_db($database);
-    //DarkSide	12345678
-    $sql = "SELECT `User` FROM `Users`  WHERE `User` = \"$user\"";
+    
+    $sql = "SELECT `user_name` FROM `users`  WHERE `user_name` = \"$user\" AND `user_password` = \"$pass\"";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1){
         //Match credentials
         //echo "Access";
         $row = $result->fetch_assoc();
-        $_SESSION['User'] = $row['User'];
+        $_SESSION['User'] = $row['user_name'];
 
-        $url.='/Practice/ColorSensorPage/ColorLectures/colorlectures.php';
+        $url.='/Practice/iotplatform/usermainpage/userview.php';
         $_SESSION["status"] = "";
     }
     else{
         //echo "User not found" . $result->num_rows;
         //echo "<br>" . $sql;
-        $url .= '/Practice/ColorSensorPage/login/login.php';
+        $url .= '/Practice/iotplatform/login/login.php';
         $_SESSION["status"] = "Usuario o contraseña incorrectos";
     }
 
