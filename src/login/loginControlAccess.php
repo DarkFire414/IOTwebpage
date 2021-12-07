@@ -1,8 +1,8 @@
 <?php
     session_start();
     //Receive data from login.php
-    $user = $_GET["user"]; //Name field on input elements in html file
-    $pass = $_GET["pass"];
+    $user = $_POST["user"]; //Name field on input elements in html file
+    $pass = $_POST["pass"];
 
     $protocol = $_SERVER['HTTPS'] ? "https" : "http";
     $url = $protocol.'://'.$_SERVER['HTTP_HOST'];

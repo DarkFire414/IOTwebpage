@@ -49,7 +49,7 @@
         <div class="main">
 
             <div class="form">
-                <form class="formContainer" action="loginControlAccess.php" method="get">
+                <form class="formContainer" action="loginControlAccess.php" method="post">
                     <h1>Soluciones IOT</h1>
                     
                     <?php
