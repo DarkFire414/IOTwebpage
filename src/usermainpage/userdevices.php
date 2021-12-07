@@ -4,10 +4,10 @@
     */
     session_start();
     //Database conection
-    $servername = "sql102.epizy.com";
-    $username = "epiz_30279333";
-    $password = "0rbzdnc6";
-    $database = "epiz_30279333_iotDB";
+    $servername = "localhost";
+    $username = "id18078501_iotsoluciones";
+    $password = "@84ert543VM@#";
+    $database = "id18078501_iotdb";
 
     // Create conection
     $conn = new mysqli($servername, $username, $password, $database);

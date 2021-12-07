@@ -1,10 +1,10 @@
 <?php
     session_start();
     //Database conection
-    $servername = "sql102.epizy.com";
-    $username = "epiz_30279333";
-    $password = "0rbzdnc6";
-    $database = "epiz_30279333_iotDB";
+    $servername = "localhost";
+    $username = "id18078501_iotsoluciones";
+    $password = "@84ert543VM@#";
+    $database = "id18078501_iotdb";
 
     // Create conection
     $conn = new mysqli($servername, $username, $password, $database);
@@ -19,6 +19,21 @@
     $sql = "SELECT `color_id`, `color_result`, `h_ref1`, `s_ref1`, `l_ref1`, `h_ref2`, `s_ref2`, `l_ref2`, `h_ref3`, `s_ref3`, `l_ref3`, `h_samp`, `s_samp`, `l_samp`, `color_diff`, `color_tol`, `color_date` FROM `data_colorimeter` WHERE `color_username` = '". $_SESSION["User"] . "'";
     //echo $sql;
     $result = $conn->query($sql);
+
+    $tablestr = "
+    <table>
+    <tr>
+        <th>ID</th>
+        <th>Estado</th>
+        <th>Referencia 1 (H,S,L)</th>
+        <th>Referencia 2 (H,S,L)</th>
+        <th>Referencia 3 (H,S,L)</th>
+        <th>Muestra (H,S,L)</th>
+        <th>Diferencia</th>
+        <th>Tolerancia</th>
+        <th>Fecha</th>
+    </tr>
+    ";
     
     if ($result->num_rows > 0)
     {
@@ -30,7 +45,7 @@
             $hex2 = convertHSL($row["h_ref2"], $row["s_ref2"], $row["l_ref2"]);
             $hex3 = convertHSL($row["h_ref3"], $row["s_ref3"], $row["l_ref3"]);
             $hex4 = convertHSL($row["h_samp"], $row["s_samp"], $row["l_samp"]);
-            echo "<tr><td>" . $row["color_id"] . 
+            $tablestr .= "<tr><td>" . $row["color_id"] . 
                  "</td><td>" . $row["color_result"] . 
                  "</td><td class = 'Ref1'>(" . $row["h_ref1"] . "," . $row["s_ref1"] . "," . $row["l_ref1"] . ')  <input type="color" id="colorInput1_' . $colorid . '" name="colorInput" value="' . $hex1 . '">' . 
                  "</td><td class = 'Ref2'>(" . $row["h_ref2"] . "," . $row["s_ref2"] . "," . $row["l_ref2"] . ')  <input type="color" id="colorInput2_' . $colorid . '" name="colorInput" value="' . $hex2 . '">' .
@@ -40,51 +55,18 @@
                  "</td><td>" . $row["color_tol"] .
                  "</td><td>" . $row["color_date"] .
                  "</td></tr>";
-
-            echo '<script>
-                 var hex1_' . $colorid . ' = "' . $hex1 . '";' . 
-                 'document.getElementById("colorInput1_' . $colorid . '").addEventListener("change", function(e){
-                    if (e.target.value != hex1_' . $colorid . ') { 
-                        document.getElementById("colorInput1_' . $colorid.  '").value = hex1_' . $colorid . ';
-                    } 
-                    });' . 
-                 "</script>";
-
-            echo '<script>
-                 var hex2_' . $colorid . ' = "' . $hex2 . '";' . 
-                 'document.getElementById("colorInput2_' . $colorid . '").addEventListener("change", function(e){
-                    if (e.target.value != hex2_' . $colorid . ') { 
-                        document.getElementById("colorInput2_' . $colorid.  '").value = hex2_' . $colorid . ';
-                    } 
-                    });' . 
-                 "</script>";
-            
-            echo '<script>
-                 var hex3_' . $colorid . ' = "' . $hex3 . '";' . 
-                 'document.getElementById("colorInput3_' . $colorid . '").addEventListener("change", function(e){
-                    if (e.target.value != hex3_' . $colorid . ') { 
-                        document.getElementById("colorInput3_' . $colorid.  '").value = hex3_' . $colorid . ';
-                    } 
-                    });' . 
-                 "</script>";
-
-            echo '<script>
-                 var hex4_' . $colorid . ' = "' . $hex4 . '";' . 
-                 'document.getElementById("colorInput4_' . $colorid . '").addEventListener("change", function(e){
-                    if (e.target.value != hex4_' . $colorid . ') { 
-                        document.getElementById("colorInput4_' . $colorid.  '").value = hex4_' . $colorid . ';
-                    } 
-                    });' . 
-                 "</script>";
-
             $colorid = $colorid + 1;
         }
     }
     else 
     { 
-        echo "0 results"; 
+        $tablestr .= "0 results"; 
     }
     $conn->close();
+
+    $tablestr .= "</table>";
+
+    echo $tablestr;
 
     function convertHSL($h, $s, $l, $toHex=true){
         $h /= 360;

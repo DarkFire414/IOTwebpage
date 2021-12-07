@@ -10,7 +10,7 @@
     if (($user == "") || ($pass == ""))
     {
         //Data no received
-        $url .= '/Practice/ColorSensorPage/login/login.php';
+        $url .= '/login/login.php';
         $_SESSION["status"] = "Ocurrio un error al recibir la información";
         header("Location: $url");
         exit;
@@ -26,10 +26,10 @@
     */
 
     //Database conection
-    $servername = "sql102.epizy.com";
-    $username = "epiz_30279333";
-    $password = "0rbzdnc6";
-    $database = "epiz_30279333_iotDB";
+    $servername = "localhost";
+    $username = "id18078501_iotsoluciones";
+    $password = "@84ert543VM@#";
+    $database = "id18078501_iotdb";
     
     // Create conection
     $conn = new mysqli($servername, $username, $password);
@@ -53,13 +53,13 @@
         $row = $result->fetch_assoc();
         $_SESSION['User'] = $row['user_name'];
 
-        $url.='/Practice/iotplatform/usermainpage/userview.php';
+        $url.='/usermainpage/userview.php';
         $_SESSION["status"] = "";
     }
     else{
         //echo "User not found" . $result->num_rows;
         //echo "<br>" . $sql;
-        $url .= '/Practice/iotplatform/login/login.php';
+        $url .= '/login/login.php';
         $_SESSION["status"] = "Usuario o contraseña incorrectos";
     }
 

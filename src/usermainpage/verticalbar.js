@@ -18,23 +18,27 @@ function getUserDevices(username)
 
         //console.log("response " + ans);
 
-        const obj = JSON.parse(ans); //Converts JSON string into a object
+        try{
+            const obj = JSON.parse(ans); //Converts JSON string into a object
 
-        var vsidebar = $("#sidebar");
+            var vsidebar = $("#sidebar");
 
-        var sdbarCode = "";
+            var sdbarCode = "";
 
-        for (const x in obj)
-        {
-            if (obj[x] != 0)
+            for (const x in obj)
             {
-                sdbarCode += `<a sdelement="true" id = "${x}" onclick="buttonId(this)" class="inactive">` + x + " (" + obj[x] + ")</a>";
+                if (obj[x] != 0)
+                {
+                    sdbarCode += `<a sdelement="true" id = "${x}" onclick="buttonId(this)" class="inactive">` + x + " (" + obj[x] + ")</a>";
+                }
+                //x = Comercial name of the device, obj[x] = Number of this devices
+                //console.log(x + "," + obj[x]);
             }
-            //x = Comercial name of the device, obj[x] = Number of this devices
-            //console.log(x + "," + obj[x]);
+            // append html code
+            vsidebar.append(sdbarCode);
+        } catch (error){
+            console.log(error);
         }
-        // append html code
-        vsidebar.append(sdbarCode);
     };
     oReq.open("GET", "userdevices.php?user=" + username, true);
     //                                                     ^ Don't block the rest of the execution.

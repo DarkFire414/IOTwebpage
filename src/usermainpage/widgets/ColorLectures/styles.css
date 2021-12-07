@@ -40,4 +40,22 @@ tr:hover {background-color: rgba(16, 206, 165, 0.486);}
 .Muestra{
     text-align: right;
 }
+button {
+    background-color: white; 
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    color: black; 
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    float: right;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
 
+button:hover {
+  background-color: #4CAF50;
+  color: white;
+}

@@ -58,12 +58,9 @@
         </div>
 
         <div class="main">
-            <h1>Panel principal</h1>
-            <p>
-                <?php
-                    echo "Bienvenido " . $_SESSION["User"];
-                ?>
-            </p>
+            <?php
+                include('widgets/Home/home.php');
+            ?>
         </div>
 
         <!-- Generate widgets -->
