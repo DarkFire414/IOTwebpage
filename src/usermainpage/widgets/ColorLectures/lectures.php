@@ -12,9 +12,24 @@
 
 <h1>Comparaciones de color</h1>
 <div style="overflow-x:auto;">
+    <p>
+        Ordenar por:
+
+        <select name="sort" onchange="setSortType(this.value); sortSelect();">
+            <option value="">Seleccione</option>
+            <option value="Fecha">Fecha</option>
+        </select>
+
+        <select name="mode" onchange="setSortMode(this.value); sortSelect();">
+            <option value="">Seleccione</option>
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+        </select>
+
+        <button onclick="generateTableComp(); sortSelect();">Recargar</button>
     
-    <button onclick="generateTableComp()">Recargar</button>
-    
+    </p>
+
     <div id="table">
         <!--Container for color comparisons-->
     </div>

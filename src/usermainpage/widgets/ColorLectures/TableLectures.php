@@ -21,7 +21,7 @@
     $result = $conn->query($sql);
 
     $tablestr = "
-    <table>
+    <table id='tblec'>
     <tr>
         <th>ID</th>
         <th>Estado</th>
@@ -37,7 +37,7 @@
     
     if ($result->num_rows > 0)
     {
-        $colorid = 0;
+        $colorid = 1;
         //Output data of each row
         while($row = $result->fetch_assoc())
         {
@@ -45,7 +45,8 @@
             $hex2 = convertHSL($row["h_ref2"], $row["s_ref2"], $row["l_ref2"]);
             $hex3 = convertHSL($row["h_ref3"], $row["s_ref3"], $row["l_ref3"]);
             $hex4 = convertHSL($row["h_samp"], $row["s_samp"], $row["l_samp"]);
-            $tablestr .= "<tr><td>" . $row["color_id"] . 
+            //$tablestr .= "<tr><td>" . $row["color_id"] .
+            $tablestr .= "<tr><td>" . $colorid . 
                  "</td><td>" . $row["color_result"] . 
                  "</td><td class = 'Ref1'>(" . $row["h_ref1"] . "," . $row["s_ref1"] . "," . $row["l_ref1"] . ')  <input type="color" id="colorInput1_' . $colorid . '" name="colorInput" value="' . $hex1 . '">' . 
                  "</td><td class = 'Ref2'>(" . $row["h_ref2"] . "," . $row["s_ref2"] . "," . $row["l_ref2"] . ')  <input type="color" id="colorInput2_' . $colorid . '" name="colorInput" value="' . $hex2 . '">' .
