@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registro de Usuarios</title>
+    </head>
+    <body>
+        <div class="form">
+            <form class="formContainer" action="userRegister.php" method="post">
+                <h1>Nuevo usuario</h1>
+                
+                <label for="user">Username: </label><br>
+                <input type="text" id="user" name="user"><br><br>
+
+                <label for="pass">Contraseña: </label><br>
+                <input type="password" id="pass" name="pass"><br><br>
+
+                <label for="email">Correo: </label><br>
+                <input type="text" id="email" name="email"><br><br>
+
+                <label for="img">Imagen (URL): </label><br>
+                <input type="text" id="img" name="img"><br><br>
+
+                <label for="clv">Clave de seguridad: </label><br>
+                <input type="password" id="clv" name="clv"><br><br>
+
+                <input class="submitButton" type="submit" value="Enviar"> 
+            </form>
+        </div>
+        <style>
+            /*Style for the form apearance*/
+            body, html{
+                height: 100%;
+            }
+            *{
+                box-sizing: border-box;
+            }
+            div.form
+            {
+                /* The image used */
+                background-image: url('../../Images/mainBackground.jpg');
+
+                /* Control the height of the image */
+                height: 100%;
+
+                /* Center and scale the image nicely */
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                position: relative;
+
+                font-family: "Courier New", Courier, monospace;
+            }
+            form.formContainer
+            {
+                position: absolute;
+                top: 5px;
+                right: 30%;
+                margin: 20px;
+                padding: 4px;
+                width: 30%;
+                /*max-width: 800px;*/
+                background-color: white;
+            }
+            /* Full-width input fields */
+            input[type=text], input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                border: none;
+                background: #f1f1f1;
+            }
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+            /* Set a style for the submit button */
+            input.submitButton {
+                background-color: #0066db;
+                color: white;
+                padding: 16px 20px;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                opacity: 0.9;
+            }
+            input.submitButton:hover {
+                opacity: 1;
+            }
+        </style>
+    </body>
+</html>

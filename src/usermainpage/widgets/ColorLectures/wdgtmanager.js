@@ -42,14 +42,14 @@ function sortByDate(mode) {
         y = rows[i + 1].getElementsByTagName("TD")[0];
         // Check if the two rows should switch place:
         if (mode == "asc"){
-            if (x.innerHTML > y.innerHTML) {
+            if (parseInt(x.innerHTML) > parseInt(y.innerHTML)) {
                 // If so, mark as a switch and break the loop:
                 shouldSwitch = true;
                 break;
             }
         }
         else if (mode == "desc"){
-            if (x.innerHTML < y.innerHTML) {
+            if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
                 // If so, mark as a switch and break the loop:
                 shouldSwitch = true;
                 break;
