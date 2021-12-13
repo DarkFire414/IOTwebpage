@@ -23,9 +23,6 @@ Basados en el ESP32:
 
 ## Por hacer
 
- - Menú de selección para varios dispositivos.
-    - Modificar base de datos para relacionar varios dispositivos
-      con un solo usuario. 
  - Diseño de widgets
     - Compatibilidad con broker MQTT
     - Graficas en tiempo real
