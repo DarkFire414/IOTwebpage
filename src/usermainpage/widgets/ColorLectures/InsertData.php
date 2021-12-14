@@ -48,7 +48,10 @@ if ($conn->connect_error)
 //Select database
 $conn->select_db($database);
 
-$sql = "INSERT INTO `data_colorimeter` (`color_id`, `color_userid`, `color_result`, `h_ref1`, `s_ref1`, `l_ref1`, `h_ref2`, `s_ref2`, `l_ref2`, `h_ref3`, `s_ref3`, `l_ref3`, `h_samp`, `s_samp`, `l_samp`, `color_diff`, `color_tol`, `color_date`, `color_deviceUniqueId`, `color_username`) VALUES (NULL, '0', '$result', '$h_ref1', '$s_ref1', '$l_ref1', '$h_ref2', '$s_ref2', '$l_ref2', '$h_ref3', '$s_ref3', '$l_ref3', '$h_samp', '$s_samp', '$l_samp', '$diff', '$tol', NULL, '$deviceid', '$user')";
+date_default_timezone_set("America/Mexico_City");
+$dt = date("Y-m-d h:i:sa");
+
+$sql = "INSERT INTO `data_colorimeter` (`color_id`, `color_userid`, `color_result`, `h_ref1`, `s_ref1`, `l_ref1`, `h_ref2`, `s_ref2`, `l_ref2`, `h_ref3`, `s_ref3`, `l_ref3`, `h_samp`, `s_samp`, `l_samp`, `color_diff`, `color_tol`, `color_date`, `color_deviceUniqueId`, `color_username`) VALUES (NULL, '0', '$result', '$h_ref1', '$s_ref1', '$l_ref1', '$h_ref2', '$s_ref2', '$l_ref2', '$h_ref3', '$s_ref3', '$l_ref3', '$h_samp', '$s_samp', '$l_samp', '$diff', '$tol', '$dt', '$deviceid', '$user')";
 //echo $sql;
 
 $conn->query($sql);
